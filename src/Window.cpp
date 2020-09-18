@@ -1,7 +1,7 @@
 #include "./Window.hpp"
 #include <iostream>
 
-Window::Window() : _text_area() {
+Window::Window() : _text_area("Hello -> World!") {
     // Sets the border width of the window.
     set_border_width(10);
 
@@ -10,8 +10,4 @@ Window::Window() : _text_area() {
 }
 
 Window::~Window() {
-}
-
-void Window::on_button_clicked() {
-    std::cout << "Hello World" << std::endl;
 }

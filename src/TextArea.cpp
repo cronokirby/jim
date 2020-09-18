@@ -1,7 +1,7 @@
 #include "./TextArea.hpp"
 
 // The constructor doesn't need to do anything
-TextArea::TextArea() {
+TextArea::TextArea(const char *text) : _text(text) {
 }
 
 // We still need to keep this around, so that the super class destructs
@@ -21,7 +21,7 @@ void TextArea::draw_text(const Cairo::RefPtr<Cairo::Context> &ctx) {
     Pango::FontDescription font{};
     font.set_family("JetBrains Mono");
     font.set_size(14000);
-    auto layout = create_pango_layout("Test -> >-> Text Yo");
+    auto layout = create_pango_layout(_text);
     layout->set_font_description(font);
     int text_width;
     int text_height;

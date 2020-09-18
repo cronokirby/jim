@@ -1,8 +1,8 @@
 #pragma once
 
+#include "./TextArea.hpp"
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
-#include "./TextArea.hpp"
 
 /// A Class for the main window in our application.
 ///
@@ -12,9 +12,6 @@
 class Window : public Gtk::Window {
     /// The single button the user can press in our application
     TextArea _text_area;
-
-    /// A callback for when _button gets clicked
-    void on_button_clicked();
 
   public:
     /// Create a new Window, without the need for any parameters
