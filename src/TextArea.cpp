@@ -20,7 +20,8 @@ void TextArea::draw_text(const Cairo::RefPtr<Cairo::Context> &ctx) {
     ctx->set_source_rgb(1.0, 1.0, 1.0);
     Pango::FontDescription font{};
     font.set_family("JetBrains Mono");
-    auto layout = create_pango_layout("Test Text Yo");
+    font.set_size(14000);
+    auto layout = create_pango_layout("Test -> >-> Text Yo");
     layout->set_font_description(font);
     int text_width;
     int text_height;
