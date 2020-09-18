@@ -1,4 +1,5 @@
 #include "./TextArea.hpp"
+#include <iostream>
 
 // The constructor doesn't need to do anything
 TextArea::TextArea(const char *text) : _text(text) {
