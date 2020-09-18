@@ -12,7 +12,7 @@ void TextArea::clear(const Cairo::RefPtr<Cairo::Context> &ctx, int width,
                      int height) {
     // We just draw a black rectangle
     ctx->set_source_rgb(0.0, 0.0, 0.0);
-    ctx->rectangle(0.0, 0.0, height, width);
+    ctx->rectangle(0.0, 0.0, width, height);
     ctx->fill();
 }
 
