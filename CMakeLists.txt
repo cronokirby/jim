@@ -23,6 +23,7 @@ add_definitions(${GTKMM_CFLAGS_OTHER})
 # Now we have our main executable, which is produced by our project
 add_executable(jim
     src/main.cpp
+    src/Window.cpp
 )
 # We link the executable with gtkmm, since it depends on that to work
 target_link_libraries(jim ${GTKMM_LIBRARIES})
