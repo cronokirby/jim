@@ -2,6 +2,7 @@
 
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
+#include "./TextArea.hpp"
 
 /// A Class for the main window in our application.
 ///
@@ -10,7 +11,7 @@
 /// application.
 class Window : public Gtk::Window {
     /// The single button the user can press in our application
-    Gtk::Button _button;
+    TextArea _text_area;
 
     /// A callback for when _button gets clicked
     void on_button_clicked();
