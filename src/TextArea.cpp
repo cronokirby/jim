@@ -3,6 +3,7 @@
 
 // The constructor doesn't need to do anything
 TextArea::TextArea(const char *text) : _text(text) {
+    set_can_focus();
 }
 
 // We still need to keep this around, so that the super class destructs
@@ -11,7 +12,8 @@ TextArea::~TextArea() {
 
 void TextArea::clear(const Cairo::RefPtr<Cairo::Context> &ctx, int width,
                      int height) {
-    ctx->set_source_rgb((double)0x2E / 0xFF, (double)0x34 / 0xFF, (double)0x40 / 0xFF);
+    ctx->set_source_rgb((double)0x2E / 0xFF, (double)0x34 / 0xFF,
+                        (double)0x40 / 0xFF);
     ctx->rectangle(0.0, 0.0, width, height);
     ctx->fill();
 }
@@ -27,6 +29,16 @@ void TextArea::draw_text(const Cairo::RefPtr<Cairo::Context> &ctx) {
     int text_height;
     layout->get_pixel_size(text_width, text_height);
     layout->show_in_cairo_context(ctx);
+}
+
+bool TextArea::on_focus_in_event(GdkEventFocus *) {
+    std::cout << "Text Area In\n";
+    return true;
+}
+
+bool TextArea::on_focus_out_event(GdkEventFocus *) {
+    std::cout << "Text Area Out\n";
+    return true;
 }
 
 bool TextArea::on_draw(const Cairo::RefPtr<Cairo::Context> &ctx) {

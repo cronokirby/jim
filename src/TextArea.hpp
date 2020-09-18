@@ -29,6 +29,16 @@ class TextArea : public Gtk::DrawingArea {
     /// @param ctx a reference to the drawing context
     bool on_draw(const Cairo::RefPtr<Cairo::Context> &ctx) override;
 
+    /// A callback for when this widget receives focus
+    ///
+    /// Useful for displaying the input cursor again, and things like that.
+    bool on_focus_in_event(GdkEventFocus *) override;
+
+    /// A callback for when this widget loses focus
+    ///
+    /// Useful for no longer displaying the text cursor, and things like that
+    bool on_focus_out_event(GdkEventFocus *) override;
+
   public:
     /// Construct a new TextArea.
     TextArea(const char *text);
