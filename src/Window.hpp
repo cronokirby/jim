@@ -1,7 +1,6 @@
 #pragma once
 
 #include "./TextArea.hpp"
-#include <gtkmm/button.h>
 #include <gtkmm/window.h>
 
 /// A Class for the main window in our application.
