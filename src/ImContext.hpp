@@ -1,6 +1,7 @@
 #pragma once
 
 #include <gtkmm/window.h>
+using Glib::ustring;
 
 /// A wrapper around Gtk's ImContext.
 ///
@@ -38,6 +39,13 @@ class ImContext {
     /// trying our best to make something more friendly to C++ usage.
     GtkIMContext *_ctx;
 
+    /// A signal for when we emit the committed strings from the context
+    sigc::signal<void, ustring> _signal_commit;
+
+    /// A sort of hack to allow providing some kind of callback to
+    /// GtkIMContext's commit signal.
+    friend void commit_cb(GtkIMContext *, const gchar *str, gpointer data);
+
   public:
     ImContext();
 
@@ -51,4 +59,10 @@ class ImContext {
     ///
     /// @return true when this key has been handled
     bool on_key_press(GdkEventKey *key_event);
+
+    /// A signal for when a string is committed.
+    ///
+    /// A string is committed when we've managed to combine multiple keys into
+    /// an input string.
+    sigc::signal<void, ustring> signal_commit();
 };
