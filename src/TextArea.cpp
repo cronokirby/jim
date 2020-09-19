@@ -3,6 +3,7 @@
 
 // The constructor doesn't need to do anything
 TextArea::TextArea(const char *text) : _text(text) {
+    std::cout << "Hello?\n";
     set_can_focus();
 }
 
@@ -42,6 +43,9 @@ bool TextArea::on_focus_out_event(GdkEventFocus *) {
 }
 
 bool TextArea::on_key_press_event(GdkEventKey *key_event) {
+    if (_im_ctx.on_key_press(key_event)) {
+        return true;
+    }
     _text.append(key_event->string);
     queue_draw();
     return true;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "./ImContext.hpp"
 #include <gtkmm/drawingarea.h>
 using Glib::ustring;
 
@@ -9,6 +10,7 @@ using Glib::ustring;
 /// and drawing text more or less manually.
 class TextArea : public Gtk::DrawingArea {
     ustring _text;
+    ImContext _im_ctx;
 
     /// Clear graphical context of this drawing area
     ///
