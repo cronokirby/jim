@@ -9,12 +9,14 @@ using Glib::ustring;
 /// and drawing text more or less manually.
 class TextArea : public Gtk::DrawingArea {
     ustring _text;
+
     /// Clear graphical context of this drawing area
     ///
     /// @param ctx a reference to the drawing context
     /// @param width the width of the rectangle to draw
     /// @param height the height of the rectangle to draw
     void clear(const Cairo::RefPtr<Cairo::Context> &ctx, int width, int height);
+
     /// Draw the main text of this component over the graphical context
     ///
     /// @param ctx a reference to the drawing context
@@ -39,9 +41,15 @@ class TextArea : public Gtk::DrawingArea {
     /// Useful for no longer displaying the text cursor, and things like that
     bool on_focus_out_event(GdkEventFocus *) override;
 
+    /// A callback for when a key is pressed inside of this widget
+    ///
+    /// @param key_event the event with information about the key press
+    bool on_key_press_event(GdkEventKey *key_event) override;
+
   public:
     /// Construct a new TextArea.
     TextArea(const char *text);
+
     /// We want to be able to call the superclass's destructor
     virtual ~TextArea();
 };

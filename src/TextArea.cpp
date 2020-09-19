@@ -41,6 +41,12 @@ bool TextArea::on_focus_out_event(GdkEventFocus *) {
     return true;
 }
 
+bool TextArea::on_key_press_event(GdkEventKey *key_event) {
+    _text.append(key_event->string);
+    queue_draw();
+    return true;
+}
+
 bool TextArea::on_draw(const Cairo::RefPtr<Cairo::Context> &ctx) {
     auto allocation = get_allocation();
     auto width = allocation.get_width();
